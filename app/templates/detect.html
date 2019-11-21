@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <center>
+        <h2>Uploaded Image</h2>
+        <h3> File ID: {{ filename }} </h3>
+        <img width=500 height=500 src="{{ filepath }}"/>
+        <h2>Results</h2>
+        <h3>File ID: {{ results_filename }}</h3>
+        <img src="{{ results_filepath }}"/>
+    </center>
+{% endblock %}

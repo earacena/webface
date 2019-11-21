@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <center>
+        <h2> Successfully uploaded file.</h2>
+        <h3> File ID: {{ filename }} </h3>
+        <img width=500 height=500 src="{{ filepath }}"/>
+        <h3><a href="/detect/{{filename}}">View Results.</a></h3>
+    </center>
+{% endblock %}
