@@ -1,3 +1,4 @@
+
 <html>
     <head>
         {% if title %}
@@ -15,4 +16,20 @@
         <hr>
         {% block content %}{% endblock %}
     </body>
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+</style>
+
+
+    <div class="footer">
+        <hr>
+        <p> face recognition - Github: <a href="https://github.com/ageitgey/face_recognition">@ageitgey</a>
+        <p> web service      - Github: <a href="https://github.com/earacena">@earacena</a>
+    </div>
 </html>
