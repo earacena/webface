@@ -1,5 +1,5 @@
 """
-Project: Web service implementation of YOLO (You Only Look Once)
+Project: Web service implementation of face recognition.
 Author: Emanuel Aracena Beriguete
 
 Description: Web forms using Flask-WTF extension.

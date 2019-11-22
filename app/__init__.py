@@ -1,5 +1,5 @@
 """
-Project Name: Web service implementation of YOLO (You Only Look Once) system.
+Project Name: Web service implementation of face recognition
 Author: Emanuel Aracena Beriguete
 Flask application instance creation.
 """
@@ -8,7 +8,7 @@ from config import Config
 from os.path import join, dirname, realpath
 
 UPLOAD_FOLDER = join(dirname(realpath(__file__)), "uploaded-images/")
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+ALLOWED_EXTENSIONS = {'jpg'}
 
 
 app = Flask(__name__)

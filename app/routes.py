@@ -1,5 +1,5 @@
 """
-Project: Web service implementation of YOLO (You Only Look Once)
+Project: Web service implementation of face recognition
 Author: Emanuel Aracena Beriguete
 
 Description: Handing for various URLs in application.
@@ -8,6 +8,7 @@ from flask import render_template, url_for, redirect, request, send_from_directo
 from app import app
 from app.forms import PhotoForm
 from werkzeug.utils import secure_filename
+from app.face_detect import recognize
 import os
 import random
 import string
@@ -49,26 +50,20 @@ def success():
 def send_file(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
 
-@app.route("/uploaded-images/results/<filename>")
-def send_result(filename):
+@app.route("/detect/uploaded-images/<filename>")
+def send_image(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+
+@app.route("/detect/uploaded-images/results/<filename>")
+def send_result(filename):
+    return send_from_directory(app.config["UPLOAD_FOLDER"] + "/results/", filename)
 
 @app.route("/detect/<filename>")
 def detect(filename):
-    def yolo(filename):
-        # Run the YOLO program with pre-trained weights and settings
-        path = os.path.join(app.instance_path, app.config["UPLOAD_FOLDER"], filename)
-        subprocess.call([os.getcwd() + "/app/darknet/darknet","detect", "darknet/cfg/yolo",
-            "yolov3.weights", path])
-        # Move result to /app.config["UPLOAD_FOLDER"]/results/filename_result
-        shutil.move("darknet/predictions.png", app.instance_path + app.config["UPLOAD_FOLDER"] +
-                    "/results/" + filename + "_result")
-        return filename + "_result"
-
+    predictions_filename = recognize(filename)
     # Pass the filename through YOLO
-    predictions_filename = yolo(filename)
     filepath = "uploaded-images/" + filename
     results_filepath = "uploaded-images/results/" + predictions_filename
     return render_template("detect.html", title= "Results", filename=filename, 
-                            filepath=filepath, results_filename=results_filename,
+                            filepath=filepath, results_filename=predictions_filename,
                             results_filepath=results_filepath)
