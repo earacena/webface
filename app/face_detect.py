@@ -26,7 +26,8 @@ def recognize(filename):
         print("[...] Face located: Top: {}, Left: {}, Bottom: {}, Right: {}".format(              top, left, bottom, right))
         draw.rectangle(((left, top),(right, bottom)), outline="white")
 
+    filename = filename.split('.')[0]
     source_image.save(os.getcwd() + "/app/uploaded-images/results/" + filename +
-                      "_result", "JPEG")
+                      "_result.jpg", "JPEG")
     
-    return filename + "_result"
+    return filename.split('.')[0] + "_result.jpg"

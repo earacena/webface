@@ -1,6 +1,63 @@
 
 <html>
+    <style>
+        html, body {
+            height: 100%;
+
+        }
+        body {
+            font-family: 'Work Sans', serif;
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1 0 auto;
+        }
+        .footer {
+            flex-shrink: 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .button {
+            background-color: black;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Work Sans', serif;
+            font-size: 20px;
+            margin: 4px 12px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+        .button1 {
+            background-color: white;
+            color: black;
+            border: 3px solid black;
+        }
+        .button2 {
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+        .button:hover {
+            background-color: black;
+            border-radius: 4px 4px 4px 4px;
+            color: white; 
+        }
+        .v1 {
+            border-left: 3px solid gray;
+            height: 20px;
+        }
+
+    </style>
     <head>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Work+Sans">
+        
         {% if title %}
         <title>{{ title }} - webFace</title>
         {% else %}
@@ -9,27 +66,22 @@
     </head>
     <body>
         <div>
-            webYolo: 
-            <a href="/index">Home</a>
-            <a href="/upload">Upload</a>
+            <center>
+                <a class="button button1" href="/index">Home</a>
+                <a class="button button1" href="/upload">Upload</a>
+                <a class="button button1" href="/about">About</a>
+            </center>
+            <hr>
         </div>
-        <hr>
+        <div class="content">
         {% block content %}{% endblock %}
+        </div>
+        <footer class="footer">
+            <hr>
+            <center>
+                <p> face recognition - Github: <a href="https://github.com/ageitgey/face_recognition">@ageitgey</a>
+                <p> web service      - Github: <a href="https://github.com/earacena">@earacena</a>
+            </center>
+        </footer>
     </body>
-<style>
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
-</style>
-
-
-    <div class="footer">
-        <hr>
-        <p> face recognition - Github: <a href="https://github.com/ageitgey/face_recognition">@ageitgey</a>
-        <p> web service      - Github: <a href="https://github.com/earacena">@earacena</a>
-    </div>
 </html>

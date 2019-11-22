@@ -25,7 +25,7 @@ def upload():
     def generate_random_id():
         # generate 15 random characters, lower case and numbers, (26+10)^15 possible
         chars = string.ascii_lowercase + string.ascii_uppercase + string.digits
-        return ''.join(random.choice(chars) for _ in range(15))
+        return ''.join(random.choice(chars) for _ in range(15)) + ".jpg"
 
     form = PhotoForm()
     if form.validate_on_submit():
@@ -67,3 +67,7 @@ def detect(filename):
     return render_template("detect.html", title= "Results", filename=filename, 
                             filepath=filepath, results_filename=predictions_filename,
                             results_filepath=results_filepath)
+
+@app.route("/about")
+def about():
+    return render_template("about.html", title="About")
