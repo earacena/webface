@@ -62,3 +62,11 @@ or
 ```
 http://127.0.0.1:5000/
 ```
+### Clean up
+Once finished, type the following to exit virtual environment:
+```
+deactivate
+```
+
+## Issues 
+* Exception handling not yet implemented
