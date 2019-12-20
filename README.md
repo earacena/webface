@@ -42,6 +42,12 @@ Open up the file called ".env" and place the key generated above inside like thi
 SECRET_KEY=1234567890abcdefabcdef
 ```
 
+Create the folders to store the uploaded images and results:
+```
+mkdir app/uploaded-images
+mkdir app/uploaded-images/results
+```
+
 Finally, launch the Flask development server. 
 Warning: Do not use this as a production server, the Flask server serves solely for development purposes:
 ```
